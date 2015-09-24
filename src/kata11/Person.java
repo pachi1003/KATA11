@@ -5,7 +5,8 @@
  */
 package kata11;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -14,10 +15,11 @@ import java.util.Date;
 public class Person {
     private final String name;
     private final String surname;
-    private final Date birth;
+    private final Calendar birth;
     private static final long MILLISECOND_PER_YEAR=(long) (1000*60*60*24*365.25); 
+    private String ramon;
     
-    public Person(String name, String surname, Date birth) {
+    public Person(String name, String surname, Calendar birth) {
         this.name = name;
         this.surname = surname;
         this.birth = birth;
@@ -31,15 +33,16 @@ public class Person {
         return surname;
     }
 
-    public Date getBirth() {
+    public Calendar getBirth() {
         return birth;
     }
     public String getFullName(){
         return name+" "+surname;
     }
     public int getAge(){
-        Date today = new Date();
-        return (int) ((today.getTime()-birth.getTime())/(1000*60*60*24*365.25));
+        Calendar today;
+        today=GregorianCalendar.getInstance();
+        return (int) (mimetodo(today.getTimeInMillis()-birth.getTimeInMillis()));
     }
     private long mimetodo(long millis){
         return millis/MILLISECOND_PER_YEAR;
